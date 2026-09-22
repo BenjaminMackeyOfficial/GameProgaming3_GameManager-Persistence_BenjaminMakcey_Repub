@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     //refs
     public ScoreWriter scoreWriter;
+    public ScoreKeeper scoreKeeper;
     public FileManager fileManager;
     //
     private void Awake()
