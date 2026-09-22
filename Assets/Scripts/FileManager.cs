@@ -22,19 +22,12 @@ public class PlayerData
 }
 public class FileManager : MonoBehaviour
 {
-    public static FileManager Initialize(Transform parent)
-    {
-        FileManager fileManager = new FileManager();
-        fileManager.transform.SetParent(parent);
-
-        return fileManager;
-    }
-
-
-
     private void Awake()
     {
-        if (!File.Exists(Application.persistentDataPath + "/playerdata.dat")) File.Create(Application.persistentDataPath + "/playerdata.dat");
+        if (!File.Exists(Application.persistentDataPath + "/playerdata.dat"))
+        {
+            File.Create(Application.persistentDataPath + "/playerdata.dat");
+        }
     }
     //maybe autoload on awake?
     public void save(PlayerData handedData)
@@ -45,16 +38,29 @@ public class FileManager : MonoBehaviour
         PlayerData data = handedData;
         bf.Serialize(file, data);
         file.Close();
-
     }
 
     public PlayerData load()
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.OpenWrite(Application.persistentDataPath + "/playerdata.dat");
+        FileStream file = File.OpenRead(Application.persistentDataPath + "/playerdata.dat");
 
-        PlayerData data = (PlayerData)bf.Deserialize(file);
+        PlayerData data;
+
+
+        if (file == null)
+        {
+            data = new PlayerData();
+        }
+        else
+        {
+            data = (PlayerData)bf.Deserialize(file);
+        }
+
+            Debug.Log(data.score + " | " + data.health);
+
         file.Close();
+
         return data;
     }
 }
