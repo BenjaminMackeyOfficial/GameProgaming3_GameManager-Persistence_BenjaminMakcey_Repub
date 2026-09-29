@@ -48,3 +48,5 @@ MonoBehaviour:
   scoreKeeper: {fileID: 0}
   fileManager: {fileID: 0}
   ScoreUIPrefab: {fileID: 786718475916358602, guid: eeff9f65f050ab34185f53c63fa3fede, type: 3}
+  FileManagerPrefab: {fileID: 7136591351562883890, guid: 01e66cc26be20e343bf061bcf0f8710c, type: 3}
+  ScoreKeeperPrefab: {fileID: 6628942844487308353, guid: 0f67b2c60fccf944aa5cd0f4f4edef02, type: 3}

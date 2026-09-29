@@ -1,25 +1,31 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class PlayerData
 {
     public float score;
     public float health;
-    public PlayerData(float givenScore, float givenHealth)
+    public float exp;
+    public PlayerData(float givenScore, float givenHealth, float givenExp)
     {
         score = givenScore;
         health = givenHealth;
+        exp = givenExp;
+        
     }
     public PlayerData()
     {
         score = 0;
         health = 0;
+        exp = 0;
     }
-
 }
+
 public class FileManager : MonoBehaviour
 {
     private void Awake()
@@ -43,8 +49,9 @@ public class FileManager : MonoBehaviour
     public PlayerData load()
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.OpenRead(Application.persistentDataPath + "/playerdata.dat");
-
+        FileStream file = File.OpenRead(Application.persistentDataPath + 
+            "/playerdata.dat");
+        
         PlayerData data;
 
 
@@ -56,9 +63,6 @@ public class FileManager : MonoBehaviour
         {
             data = (PlayerData)bf.Deserialize(file);
         }
-
-            Debug.Log(data.score + " | " + data.health);
-
         file.Close();
 
         return data;
