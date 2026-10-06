@@ -20,14 +20,15 @@ public class GameManager : MonoBehaviour
     public ScoreWriter scoreWriter;
     public ScoreKeeper scoreKeeper;
     public FileManager fileManager;
+    public LevelManager levelManager;
     //
 
     //
     [SerializeField] GameObject ScoreUIPrefab;
     [SerializeField] GameObject FileManagerPrefab;
     [SerializeField] GameObject ScoreKeeperPrefab;
+    [SerializeField] GameObject LevelManagerPrefab;
 
-    private SceneManager sceneManager;
     private void Awake()
     {
         if (instance == null)
@@ -53,6 +54,10 @@ public class GameManager : MonoBehaviour
 
         scoreWriter = MakeScoreUI();
         scoreWriter.transform.SetParent(transform, false);
+
+        levelManager = MakeLevelManager();
+        levelManager.transform.SetParent(transform, false);
+        
     }
     
     private ScoreWriter MakeScoreUI()
@@ -75,11 +80,11 @@ public class GameManager : MonoBehaviour
         return curScoreKeeper.GetComponent<ScoreKeeper>();
     }
 
-    void Update()
+    private LevelManager MakeLevelManager()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) SceneManager.LoadScene(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) SceneManager.LoadScene(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) SceneManager.LoadScene(2); 
+        Debug.Log("Creating Level Manager");
+        GameObject curlevelManager = Instantiate(LevelManagerPrefab);
+        return curlevelManager.GetComponent<LevelManager>();
     }
 
 }

@@ -42,7 +42,7 @@ public class FileManager : MonoBehaviour
         FileStream file = File.OpenWrite(Application.persistentDataPath + "/playerdata.dat");
 
         PlayerData data = handedData;
-        bf.Serialize(file, data);
+        bf.Serialize(file, data); // <---- HERE
         file.Close();
     }
 
@@ -61,7 +61,7 @@ public class FileManager : MonoBehaviour
         }
         else
         {
-            data = (PlayerData)bf.Deserialize(file);
+            data = (PlayerData)bf.Deserialize(file); // <---- HERE
         }
         file.Close();
 
