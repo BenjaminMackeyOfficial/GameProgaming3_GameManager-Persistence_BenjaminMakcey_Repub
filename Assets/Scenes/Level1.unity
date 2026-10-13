@@ -285,7 +285,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Q = +1 Score\nA = -1 Score\n\nE = +1 Health\nD = -1 Health \n\nR = +1
-    Score\nF = -1 Score\n\n1 = scene 1\n2 = scene 2\n3 = scene 3"
+    Score\nF = -1 Score\n\n1 = scene 1\n2 = scene 2\n3 = scene 3\n\nESC = pause"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -417,7 +417,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174361082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 16.64}
+  m_LocalPosition: {x: 0, y: 0, z: 28.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
