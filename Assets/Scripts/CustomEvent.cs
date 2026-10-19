@@ -11,7 +11,6 @@ public class CustomEvent
 
     public string EventName {get ; private set;}
     public event Action ping;
-
     public void Invoke()
     {
         ping?.Invoke();

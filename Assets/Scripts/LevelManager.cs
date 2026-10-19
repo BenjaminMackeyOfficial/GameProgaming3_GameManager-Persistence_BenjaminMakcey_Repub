@@ -17,31 +17,29 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        if (!isPaused)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1)) SceneManager.LoadScene(0);
-            if (Input.GetKeyDown(KeyCode.Alpha2)) SceneManager.LoadScene(1);
-            if (Input.GetKeyDown(KeyCode.Alpha3)) SceneManager.LoadScene(2);
-        }
-
+     
+        if (Input.GetKeyDown(KeyCode.Alpha1)) LoadScene(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) LoadScene(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) LoadScene(2);
         if(Input.GetKeyDown(KeyCode.Escape)) TogglePauseMenu();
     }
 
+    
     private void TogglePauseMenu()
     {
         if (!isPaused)
         {
+            if (!GameManager.Instance.gameStateManager.RequestEnterPaused()) return;
             audioSource.Play();
             LoadSceneOntop("PauseMenu");
             isPaused = true;
         }
         else
         {
+            if (!GameManager.Instance.gameStateManager.RequestEnterPlay()) return;
             UnLoadSceneOntop("PauseMenu");
             isPaused = false;
-        }
-
-        
+        }  
     }
 
     private void LoadSceneOntop(string sceneName)
@@ -52,5 +50,12 @@ public class LevelManager : MonoBehaviour
     private void UnLoadSceneOntop(string sceneName)
     {
         SceneManager.UnloadSceneAsync(sceneName);
+    }
+
+    private void LoadScene(int load)
+    {
+        if(!GameManager.Instance.gameStateManager.RequestEnterLoading()) return;
+        SceneManager.LoadScene(load);
+        GameManager.Instance.gameStateManager.RequestEnterPlay();
     }
 }

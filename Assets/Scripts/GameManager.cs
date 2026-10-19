@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public ScoreKeeper scoreKeeper;
     public FileManager fileManager;
     public LevelManager levelManager;
+    public GameStateManager gameStateManager;
     //
 
     //
@@ -38,7 +39,6 @@ public class GameManager : MonoBehaviour
         }
         else if (instance != this) 
         {
-            Debug.Log("Destroying duplicate Game Manager");
             Destroy(this);
         }
     }
@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour
 
         levelManager = MakeLevelManager();
         levelManager.transform.SetParent(transform, false);
+
+        gameStateManager = MakeGamestateManager();
+        gameStateManager.transform.SetParent(transform, false);
         
     }
     
@@ -85,6 +88,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("Creating Level Manager");
         GameObject curlevelManager = Instantiate(LevelManagerPrefab);
         return curlevelManager.GetComponent<LevelManager>();
+    }
+
+    private GameStateManager MakeGamestateManager()
+    {
+        Debug.Log("Creating Gamestate Manager");
+        GameObject obj = new GameObject();
+        GameStateManager manager = obj.AddComponent<GameStateManager>();
+        return manager;
     }
 
 }

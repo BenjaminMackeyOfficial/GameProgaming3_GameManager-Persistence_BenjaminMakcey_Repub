@@ -215,7 +215,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7080399623497439831, guid: 013c446ec795a1a42b34310385782f86, type: 3}
+    - {fileID: 2989127740361102092, guid: 013c446ec795a1a42b34310385782f86, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -250,7 +252,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1837336133}
   - component: {fileID: 1837336132}
-  - component: {fileID: 1837336131}
   - component: {fileID: 1837336134}
   m_Layer: 0
   m_Name: Main Camera
@@ -259,14 +260,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1837336131
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837336130}
-  m_Enabled: 1
 --- !u!20 &1837336132
 Camera:
   m_ObjectHideFlags: 0

@@ -46,7 +46,6 @@ public class ScoreWriter : MonoBehaviour
     }
     public void UpdateLevelName()
     {
-        Debug.Log(SceneManager.GetActiveScene().name);
         levelName.text = SceneManager.GetActiveScene().name;
     }
     
